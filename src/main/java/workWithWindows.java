@@ -13,12 +13,14 @@ public class workWithWindows{
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("https://www.lamoda.by/");
+        String mainwindowhandle=driver.getWindowHandle();
         driver.findElement(By.xpath("//span[text()=\"Войти\"]")).click();
         driver.findElement(By.xpath("//span[@class='link auth-social__item auth-social__item_fb']")).click();
         for(String windowHandle:driver.getWindowHandles()){
             driver.switchTo().window(windowHandle);
         }
         driver.findElement(By.xpath("//a[text()='Забыли аккаунт?']")).click();
+        driver.switchTo().window(mainwindowhandle);
 
     }
 }
